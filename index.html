@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mapa interactivo de procesos, roles, sistemas y tiempos del Área de Archivo de la Universidad Peruana Cayetano Heredia (UPCH).">
+  <meta name="theme-color" content="#171914">
+  <title>Mapa de Procesos y Flujo de Trabajo - Área de Archivo UPCH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#flujos">Saltar al mapa de procesos</a>
+<noscript>
+  <p class="noscript-note"><strong>Activa JavaScript para ver el mapa interactivo.</strong><br>Este mapa de procesos carga los flujos, el equipo y los filtros de forma dinámica. Sin JavaScript solo se muestra esta página de referencia.</p>
+</noscript>
+
+<header>
+  <nav class="site-nav" aria-label="Navegación principal">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true"><span>U</span></span>
+        <span class="brand-copy">
+          <span class="brand-name">Archivo UPCH</span>
+          <span class="brand-sub">Mapa operativo</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#flujos">Flujos</a>
+        <a href="#flujo-7">Proyectos</a>
+        <a href="#equipo">Equipo</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#filtros" class="nav-filter-mobile"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Filtrar</a>
+        <button type="button" class="nav-print" id="printBtn" title="Imprimir o guardar como PDF">
+          <i class="fa-regular fa-file-pdf" aria-hidden="true"></i><span>Exportar</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>Archivo UPCH</span>
+            <span class="sep" aria-hidden="true"></span>
+            <span>Mapa operativo 2026</span>
+          </div>
+          <h1>Mapa de procesos y <span class="text-gold">flujo de trabajo</span><span class="hero-h1-area">Área de Archivo UPCH</span></h1>
+          <p class="hero-sub">Gestión Operativa, Tiempos de Entrega y Roles de Personal</p>
+          <p class="hero-desc">Una vista única para entender cómo se mueve el documento: quién hace qué, con qué sistema, en cuánto tiempo y cómo se conectan los flujos físicos y digitales del archivo.</p>
+          <div class="hero-meta">
+            <span class="meta-pill"><i class="fa-solid fa-sitemap" aria-hidden="true"></i> <span id="metaFlowCount">7</span> flujos</span>
+            <span class="meta-pill"><i class="fa-solid fa-users" aria-hidden="true"></i> <span id="metaTeamCount">7</span> colaboradores + supervisión</span>
+            <span class="meta-pill"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Actualizado · nov 2026</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#flujos" class="btn-primary">Explorar flujos <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+            <a href="#equipo" class="btn-ghost">Conocer al equipo</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-orbit" aria-hidden="true">
+            <svg viewBox="0 0 280 280" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#F8B800"/>
+                  <stop offset=".55" stop-color="#E71230"/>
+                  <stop offset="1" stop-color="#F8B800"/>
+                </linearGradient>
+              </defs>
+              <circle cx="140" cy="140" r="119" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+              <circle class="orbit-spin" cx="140" cy="140" r="119" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="2 8"/>
+              <circle cx="140" cy="140" r="99" fill="none" stroke="url(#ringGrad)" stroke-width="1.5" stroke-dasharray="205 417" stroke-linecap="round" transform="rotate(-90 140 140)" opacity=".85"/>
+              <circle cx="140" cy="30" r="5.5" fill="#171914" stroke="#F8B800" stroke-width="1.5"/>
+              <circle cx="140" cy="30" r="2" fill="#F8B800"/>
+              <circle cx="231" cy="73" r="4" fill="#171914" stroke="#E71230" stroke-width="1.5"/>
+              <circle cx="254" cy="172" r="4.5" fill="#171914" stroke="#F8B800" stroke-width="1.5"/>
+              <circle cx="191" cy="250" r="4" fill="#171914" stroke="#E71230" stroke-width="1.5"/>
+              <circle cx="89" cy="250" r="4.5" fill="#171914" stroke="#F8B800" stroke-width="1.5"/>
+              <circle cx="26" cy="172" r="4" fill="#171914" stroke="#E71230" stroke-width="1.5"/>
+              <circle cx="49" cy="73" r="4.5" fill="#171914" stroke="#F8B800" stroke-width="1.5"/>
+              <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,.035)" stroke-width="1"/>
+            </svg>
+            <div class="orbit-center">
+              <span class="orbit-num" id="orbitFlowCount">07</span>
+              <span class="orbit-label">flujos mapeados</span>
+              <span class="orbit-sub" id="orbitSubline">3 sistemas · 2 proyectos</span>
+            </div>
+            <div class="orbit-caption"><i class="fa-solid fa-circle" aria-hidden="true"></i> Operación activa</div>
+          </div>
+
+          <article class="person-card person-card--lead person-card--hero">
+            <span class="person-avatar" aria-hidden="true">WL</span>
+            <span class="person-name">Wilde Lavado</span>
+            <span class="person-role">Representante de Medicina</span>
+            <span class="person-desc">Coordina, elabora y ejecuta el Plan Estratégico y Plan Operativo Anual.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="kpi-grid" aria-label="Indicadores principales">
+        <a href="#equipo" class="kpi-card" data-flujo-style="1">
+          <div class="kpi-top">
+            <span class="kpi-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
+            <span class="kpi-label">Total personal</span>
+            <i class="fa-solid fa-arrow-up-right-from-square kpi-arrow" aria-hidden="true"></i>
+          </div>
+          <div class="kpi-value-row"><span class="kpi-value" id="kpiTeamCount">7</span><span class="kpi-unit">colaboradores</span></div>
+          <p class="kpi-note"><strong>+ 1 supervisor</strong> · equipo operativo</p>
+          <div class="kpi-extra"><div class="avatar-stack" id="kpiAvatars" aria-label="Colaboradores del área"></div></div>
+        </a>
+
+        <a href="#flujo-4" class="kpi-card" data-flujo-style="2">
+          <div class="kpi-top">
+            <span class="kpi-icon"><i class="fa-solid fa-keyboard" aria-hidden="true"></i></span>
+            <span class="kpi-label">Meta de digitación</span>
+            <i class="fa-solid fa-arrow-up-right-from-square kpi-arrow" aria-hidden="true"></i>
+          </div>
+          <div class="kpi-value-row"><span class="kpi-value">25–30</span><span class="kpi-unit">hojas / día</span></div>
+          <p class="kpi-note">Producción diaria del equipo FAMED + FAENF</p>
+          <div class="kpi-extra">
+            <div class="kpi-progress"><span data-flujo-style="3"></span></div>
+            <div class="kpi-footline"><span>Ritmo objetivo</span><span>25 — 30</span></div>
+          </div>
+        </a>
+
+        <a href="#flujos" class="kpi-card" data-flujo-style="4" id="systemsDialogTrigger" aria-haspopup="dialog" aria-controls="stepDialog">
+          <div class="kpi-top">
+            <span class="kpi-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></span>
+            <span class="kpi-label">Sistemas clave</span>
+            <i class="fa-solid fa-arrow-up-right-from-square kpi-arrow" aria-hidden="true"></i>
+          </div>
+          <div class="kpi-value-row"><span class="kpi-value">03</span><span class="kpi-unit">sistemas</span></div>
+          <div class="kpi-systems">
+            <div class="kpi-sys-row"><i class="fa-solid fa-server" aria-hidden="true"></i><b>FileServer</b><small>Repositorio</small></div>
+            <div class="kpi-sys-row"><i class="fa-solid fa-camera-retro" aria-hidden="true"></i><b>ImagingSoft</b><small>Repositorio</small></div>
+            <div class="kpi-sys-row"><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i><b>Sheets/Drive</b><small>Control y respaldo</small></div>
+          </div>
+        </a>
+
+        <a href="#flujo-7" class="kpi-card" data-flujo-style="5">
+          <div class="kpi-top">
+            <span class="kpi-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span>
+            <span class="kpi-label">Proyectos activos</span>
+            <i class="fa-solid fa-arrow-up-right-from-square kpi-arrow" aria-hidden="true"></i>
+          </div>
+          <div class="kpi-value-row"><span class="kpi-value">02</span><span class="kpi-unit">frentes de trabajo</span></div>
+          <div class="kpi-projects">
+            <div class="kpi-project-row"><span class="dot dot--red"></span><span>Búsqueda histórica</span><span class="time">50%</span></div>
+            <div class="kpi-project-row"><span class="dot"></span><span>Sistema buscador SG</span><span class="time">10 d</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container filter-shell" id="filtros">
+    <section class="filter-panel" aria-labelledby="filtersTitle">
+      <div class="filter-head">
+        <div>
+          <span class="eyebrow-dark"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Explorador</span>
+          <h2 class="filter-title" id="filtersTitle">Filtrar el mapa</h2>
+        </div>
+        <p class="filter-help">Combina proceso, responsable y sistema. Los pasos que no coinciden se atenúan para mantener el contexto del flujo.</p>
+      </div>
+
+      <div class="filter-grid">
+        <div class="filter-field filter-field--process filter-dropdown">
+          <span class="filter-kicker" id="lbl-process">Proceso / macroproceso</span>
+          <button type="button" class="filter-trigger" id="trigger-process" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-process" aria-labelledby="lbl-process trigger-process">
+            <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+            <span class="filter-value" id="value-process">Todos los procesos</span>
+            <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+          </button>
+          <div class="filter-menu" id="menu-process" role="listbox" aria-labelledby="lbl-process" hidden></div>
+        </div>
+
+        <div class="filter-field filter-dropdown">
+          <span class="filter-kicker" id="lbl-people">Responsable</span>
+          <button type="button" class="filter-trigger" id="trigger-people" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-people" aria-labelledby="lbl-people trigger-people">
+            <i class="fa-solid fa-users" aria-hidden="true"></i>
+            <span class="filter-value" id="value-people">Todo el equipo</span>
+            <span class="filter-count" id="count-people" hidden>0</span>
+            <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+          </button>
+          <div class="filter-menu" id="menu-people" role="listbox" aria-multiselectable="true" aria-labelledby="lbl-people" hidden></div>
+        </div>
+
+        <div class="filter-field filter-dropdown">
+          <span class="filter-kicker" id="lbl-systems">Sistema utilizado</span>
+          <button type="button" class="filter-trigger" id="trigger-systems" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-systems" aria-labelledby="lbl-systems trigger-systems">
+            <i class="fa-solid fa-hard-drive" aria-hidden="true"></i>
+            <span class="filter-value" id="value-systems">Todos los sistemas</span>
+            <span class="filter-count" id="count-systems" hidden>0</span>
+            <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+          </button>
+          <div class="filter-menu" id="menu-systems" role="listbox" aria-multiselectable="true" aria-labelledby="lbl-systems" hidden></div>
+        </div>
+
+        <button type="button" class="reset-filters" id="resetFilters"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Limpiar</button>
+      </div>
+
+      <div class="filter-foot">
+        <div class="active-chips" id="activeChips"></div>
+        <div class="filter-result" id="filterResult">
+          <span id="resultsNote" tabindex="-1" aria-live="polite"><strong>7</strong> de 7 procesos visibles</span>
+          <span class="dim-note"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> pasos atenuados = sin coincidencia</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="container flows-section" id="flujos" aria-labelledby="flowsTitle">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Mapa operativo · <span id="flowsEyebrowCount">7</span> flujos</span>
+        <h2 id="flowsTitle">Flujos de trabajo</h2>
+        <p>Abre cada proceso, recorre los pasos y haz clic en una tarjeta para ver responsable, sistemas, tiempos y entregables.</p>
+      </div>
+      <div class="view-tools">
+        <button type="button" class="tool-btn" id="expandAll"><i class="fa-solid fa-angles-down" aria-hidden="true"></i> Expandir</button>
+        <button type="button" class="tool-btn" id="collapseAll"><i class="fa-solid fa-angles-up" aria-hidden="true"></i> Contraer</button>
+        <button type="button" class="tool-btn" id="printBtn2"><i class="fa-solid fa-print" aria-hidden="true"></i> Imprimir</button>
+      </div>
+    </div>
+
+    <p class="print-only" id="printFilterNote">Mapa completo · sin filtros aplicados</p>
+
+    <div class="workspace">
+      <aside class="sidebar" aria-label="Índice y leyenda">
+        <div class="flow-index">
+          <div class="index-head">
+            <span class="index-title">Índice de procesos</span>
+            <span class="index-count" id="indexCount">7/7</span>
+          </div>
+          <nav class="index-list" id="flowIndexList" aria-label="Ir a un flujo"></nav>
+        </div>
+        <div class="legend-card">
+          <div class="legend-title"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Leyenda</div>
+          <div class="legend-list">
+            <div class="legend-row"><i class="fa-solid fa-circle" data-flujo-style="6" aria-hidden="true"></i><span><b>Operativo</b> · flujo vigente</span></div>
+            <div class="legend-row"><i class="fa-solid fa-rotate" data-flujo-style="7" aria-hidden="true"></i><span><b>Quincenal</b> · lote SEGEN</span></div>
+            <div class="legend-row"><i class="fa-solid fa-diagram-project" data-flujo-style="8" aria-hidden="true"></i><span><b>Proyecto</b> · cierre por fases</span></div>
+            <div class="legend-row"><i class="fa-solid fa-link" data-flujo-style="9" aria-hidden="true"></i><span><b>Enlace</b> · cruce entre flujos</span></div>
+          </div>
+          <p class="legend-conn"><strong>Conexión clave</strong><br>Flujos 2 ↔ 5: gestión física, destrucción y recojo de material entre Archivo Central y FAMED.</p>
+        </div>
+        <p class="side-note"><i class="fa-solid fa-clock" aria-hidden="true"></i> Los tiempos son referenciales y corresponden a condiciones operativas normales.</p>
+      </aside>
+
+      <div class="flows-column">
+        <div id="flowsList"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-icon"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></span>
+          <h3>Sin procesos para esta combinación</h3>
+          <p>Prueba con otro responsable o sistema, o vuelve a mostrar el mapa completo.</p>
+          <button type="button" class="btn-primary" id="emptyReset" data-flujo-style="10">Limpiar filtros <i class="fa-solid fa-rotate-left" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section" id="equipo" aria-labelledby="teamTitle">
+    <div class="container">
+      <div class="team-head">
+        <div>
+          <span class="section-eyebrow">Personas y roles</span>
+          <h2 id="teamTitle">Equipo de archivo</h2>
+          <p>Siete colaboradores y una supervisión que conectan la atención de solicitudes, la digitalización, la digitación, el control de calidad y los proyectos especiales.</p>
+        </div>
+        <div class="team-stats" aria-label="Resumen del equipo">
+          <span class="team-stat"><b id="statCollaborators">7</b> colaboradores</span>
+          <span class="team-stat"><b id="statSupervisors">1</b> supervisor</span>
+          <span class="team-stat"><b id="statDigitadores">4</b> digitadores</span>
+        </div>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+      <p class="team-hint"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Haz clic en una persona para filtrar sus flujos en el mapa.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true"><span>U</span></span>
+          <div>
+            <div class="footer-brand-name">Área de Archivo UPCH</div>
+            <div class="footer-brand-sub">Universidad Peruana Cayetano Heredia</div>
+          </div>
+        </div>
+        <p class="footer-desc">Mapa de procesos y flujo de trabajo para la gestión operativa, los tiempos de entrega y los roles del equipo de archivo.</p>
+        <div class="footer-actions">
+          <button type="button" class="footer-btn" id="printBtn3"><i class="fa-solid fa-print" aria-hidden="true"></i> Imprimir / PDF</button>
+          <button type="button" class="footer-btn" id="backTopFooter"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i> Volver arriba</button>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Sistemas</div>
+        <div class="footer-list" id="footerSystems"></div>
+      </div>
+      <div>
+        <div class="footer-title">Notas del mapa</div>
+        <div class="footer-list">
+          <div class="footer-row"><i class="fa-solid fa-clock" aria-hidden="true"></i><span>Tiempos referenciales, sujetos a volumen y disponibilidad de información.</span></div>
+          <div class="footer-row"><i class="fa-solid fa-link" aria-hidden="true"></i><span>Los enlaces entre flujos señalan dependencias operativas, no jerarquías.</span></div>
+          <div class="footer-row"><i class="fa-solid fa-lock" aria-hidden="true"></i><span>Historias clínicas: información sensible con acceso restringido.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 · Área de Archivo UPCH · Documento de gestión interna</span>
+      <span>Actualizado noviembre 2026 · <a href="#top">Volver al inicio</a></span>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="back-top" id="backTop" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+<dialog class="step-dialog" id="stepDialog" aria-labelledby="dialogTitle">
+  <div class="dialog-card">
+    <button type="button" class="dialog-close" id="dialogClose" aria-label="Cerrar detalle"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <div id="dialogContent"></div>
+  </div>
+</dialog>
+
+<template id="systemsDialogContent">
+  <div class="dialog-top dialog-top--systems" style="--tone:#F8B800">
+    <div class="dialog-grid-bg" aria-hidden="true"></div>
+    <span class="dialog-kicker"><span class="pulse-dot" aria-hidden="true"></span> Infraestructura · Mapa operativo</span>
+    <h3 class="dialog-title" id="dialogTitle">Sistemas clave</h3>
+    <p class="dialog-flow">Repositorio, digitalización y control: la infraestructura digital que sostiene el flujo documental del archivo.</p>
+    <div class="dialog-badges">
+      <span class="dialog-badge"><b>03</b> sistemas</span>
+      <span class="dialog-badge"><i class="fa-solid fa-lock" aria-hidden="true"></i> Acceso restringido</span>
+      <span class="dialog-badge"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Nov 2026</span>
+    </div>
+  </div>
+
+  <div class="dialog-body dialog-body--systems">
+    <p class="dialog-intro">
+      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+      <span>Tres herramientas articulan la operación digital del archivo. La consulta y modificación de información está limitada al personal autorizado del área.</span>
+    </p>
+
+    <div class="system-list">
+      <section class="system-card" style="--tone:#E71230;--tone-soft:#FDECEE" aria-labelledby="fileServerTitle">
+        <header class="system-head">
+          <span data-dialog-system="fileserver"></span>
+          <div class="system-head-copy">
+            <span class="system-kicker">Repositorio · Sistema 01</span>
+            <h4 id="fileServerTitle">FileServer</h4>
+          </div>
+          <span class="system-index" aria-hidden="true">01</span>
+        </header>
+        <p class="system-role">Custodia y distribución de documentos dentro de la red institucional.</p>
+        <div class="system-facts">
+          <div class="system-fact system-fact--wide">
+            <span class="system-fact-label"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Función</span>
+            <p class="system-fact-value">Repositorio centralizado en la red de la UPCH que almacena y distribuye documentos y datos a usuarios y dispositivos autorizados.</p>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-lock" aria-hidden="true"></i> Acceso</span>
+            <p class="system-fact-value system-fact-value--note">Limitado a</p>
+            <div class="dialog-access-people">
+              <span class="dialog-access-person"><span data-access-avatar="martin"></span> Martín Carbajo</span>
+              <span class="dialog-access-person"><span data-access-avatar="adriana"></span> Adriana Leonardo</span>
+            </div>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Uso</span>
+            <p class="system-fact-value system-fact-value--note">Búsqueda, consulta y descarga de documentos según permisos asignados por área.</p>
+          </div>
+        </div>
+        <div class="system-flows">
+          <span class="system-flows-label">Flujos vinculados</span>
+          <button type="button" class="system-flow-link" data-goto-flow="1" aria-label="Ir al Flujo 01">01</button>
+          <button type="button" class="system-flow-link" data-goto-flow="7" aria-label="Ir al Flujo 07">07</button>
+        </div>
+      </section>
+
+      <section class="system-card" style="--tone:#0F766E;--tone-soft:#E6F5F3" aria-labelledby="imagingSoftTitle">
+        <header class="system-head">
+          <span data-dialog-system="imaging"></span>
+          <div class="system-head-copy">
+            <span class="system-kicker">Digitalización · Sistema 02</span>
+            <h4 id="imagingSoftTitle">ImagingSoft</h4>
+          </div>
+          <span class="system-index" aria-hidden="true">02</span>
+        </header>
+        <p class="system-role">Digitalización, indexación y búsqueda de la documentación del Archivo FAMED.</p>
+        <div class="system-facts">
+          <div class="system-fact system-fact--wide">
+            <span class="system-fact-label"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Función</span>
+            <p class="system-fact-value">Repositorio web del Área de Archivo FAMED. Almacena documentación, permite indexarla por metadatos y ofrece filtros de búsqueda.</p>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-lock" aria-hidden="true"></i> Acceso</span>
+            <p class="system-fact-value system-fact-value--note">Personal de Archivo FAMED.</p>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-link" aria-hidden="true"></i> Dirección</span>
+            <p class="system-fact-value">
+              <a class="dialog-cta dialog-cta--red" href="https://archivodigital.upch.edu.pe/imagingweb/#!" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Ir a ImagingSoft</a>
+            </p>
+          </div>
+        </div>
+        <div class="system-flows">
+          <span class="system-flows-label">Flujos vinculados</span>
+          <button type="button" class="system-flow-link" data-goto-flow="2" aria-label="Ir al Flujo 02">02</button>
+          <button type="button" class="system-flow-link" data-goto-flow="3" aria-label="Ir al Flujo 03">03</button>
+          <button type="button" class="system-flow-link" data-goto-flow="4" aria-label="Ir al Flujo 04">04</button>
+          <button type="button" class="system-flow-link" data-goto-flow="5" aria-label="Ir al Flujo 05">05</button>
+          <button type="button" class="system-flow-link" data-goto-flow="7" aria-label="Ir al Flujo 07">07</button>
+        </div>
+      </section>
+
+      <section class="system-card" style="--tone:#C58A00;--tone-soft:#FFF6D9" aria-labelledby="sheetsDriveTitle">
+        <header class="system-head">
+          <span data-dialog-system="sheets"></span>
+          <div class="system-head-copy">
+            <span class="system-kicker">Control · Sistema 03</span>
+            <h4 id="sheetsDriveTitle">Sheets/Drive</h4>
+          </div>
+          <span class="system-index" aria-hidden="true">03</span>
+        </header>
+        <p class="system-role">Registro operativo, reportes y respaldo de la información del área.</p>
+        <div class="system-facts">
+          <div class="system-fact system-fact--wide">
+            <span class="system-fact-label"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Función</span>
+            <p class="system-fact-value">Apoya el control, los reportes y el respaldo del Área de Archivo. Se usa para registrar entregas y observaciones, y para consolidar información de los procesos.</p>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-lock" aria-hidden="true"></i> Acceso</span>
+            <p class="system-fact-value system-fact-value--note">Personal de Archivo FAMED.</p>
+          </div>
+          <div class="system-fact">
+            <span class="system-fact-label"><i class="fa-solid fa-table-list" aria-hidden="true"></i> Uso</span>
+            <p class="system-fact-value system-fact-value--note">Registro de entregas, observaciones y consolidación de reportes por proceso.</p>
+          </div>
+        </div>
+        <div class="system-flows">
+          <span class="system-flows-label">Flujos vinculados</span>
+          <button type="button" class="system-flow-link" data-goto-flow="1" aria-label="Ir al Flujo 01">01</button>
+          <button type="button" class="system-flow-link" data-goto-flow="2" aria-label="Ir al Flujo 02">02</button>
+          <button type="button" class="system-flow-link" data-goto-flow="4" aria-label="Ir al Flujo 04">04</button>
+          <button type="button" class="system-flow-link" data-goto-flow="5" aria-label="Ir al Flujo 05">05</button>
+          <button type="button" class="system-flow-link" data-goto-flow="6" aria-label="Ir al Flujo 06">06</button>
+          <button type="button" class="system-flow-link" data-goto-flow="7" aria-label="Ir al Flujo 07">07</button>
+        </div>
+      </section>
+    </div>
+
+    <p class="dialog-footer-note">
+      <i class="fa-solid fa-lock" aria-hidden="true"></i>
+      <span>Los accesos se gestionan por rol. Historias clínicas y documentación sensible mantienen acceso restringido.</span>
+    </p>
+  </div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
