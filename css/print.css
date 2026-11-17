@@ -1,0 +1,46 @@
+
+
+    /* ---------- PRINT ---------- */
+    @media print {
+      @page { margin: 12mm; }
+      body { background: #fff !important; color: #171914 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .site-nav, .skip-link, .hero-side, .hero-orbit, .filter-shell, .sidebar, .view-tools, .back-top, .hero-cta, .hero-grid, .team-hint, .footer-actions, .step-dialog { display: none !important; }
+      .hero { background: #fff !important; color: #171914 !important; padding: 0 0 16px !important; }
+      .hero::before, .hero::after { display: none !important; }
+      .print-only { display: block !important; margin: 0 0 12px; color: #333 !important; font-size: 9pt !important; }
+      .track-nav, .track-shell::before, .track-shell::after { display: none !important; }
+      .hero h1 { font-size: 30pt !important; color: #171914 !important; }
+      .hero h1 .text-gold { color: #9A6500 !important; }
+      .hero-h1-area { color: #666 !important; }
+      .hero-sub, .hero-desc { color: #555 !important; }
+      .meta-pill { border-color: #ddd !important; color: #555 !important; }
+      .meta-pill i { color: #9A6500 !important; }
+      .kpi-grid { grid-template-columns: repeat(4, 1fr) !important; margin-top: 18px !important; gap: 8px !important; }
+      .kpi-card { background: #fff !important; border: 1px solid #ddd !important; color: #171914 !important; min-height: auto !important; break-inside: avoid; }
+      .kpi-value, .kpi-label, .kpi-note, .kpi-unit { color: #171914 !important; }
+      .kpi-note strong { color: #9A6500 !important; }
+      .kpi-sys-row, .kpi-project-row { color: #555 !important; }
+      .kpi-sys-row b, .kpi-project-row .time { color: #333 !important; }
+      .avatar-stack .avatar { border-color: #fff !important; }
+      .flows-section { padding-top: 22px !important; }
+      .workspace { display: block !important; }
+      .flow-card { break-inside: auto; box-shadow: none !important; border-color: #ddd !important; margin-bottom: 10px !important; }
+      .flow-body { display: block !important; }
+      .flow-track { display: block !important; overflow: visible !important; padding: 0 !important; }
+      .step-wrap { display: block !important; width: 100% !important; margin-bottom: 5px !important; }
+      .step-card, .flow-track--short .step-card { width: 100% !important; max-width: none !important; min-height: auto !important; box-shadow: none !important; break-inside: avoid; }
+      .step-arrow { display: none !important; }
+      .branch-row { grid-template-columns: 100px 1fr !important; }
+      .branch-steps { display: block !important; }
+      .branch-steps .step-card { width: 100% !important; }
+      .team-section { padding: 22px 0 !important; break-before: page; }
+      .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .person-card { break-inside: avoid; min-height: auto !important; }
+      .person-desc { display: none !important; }
+      .site-footer { break-before: page; background: #fff !important; color: #171914 !important; }
+      .footer-row, .footer-desc, .footer-brand-sub { color: #555 !important; }
+      .footer-title { color: #9A6500 !important; }
+      .footer-bottom { color: #777 !important; border-color: #ddd !important; }
+      .flow-card[open] .flow-toggle { display: none; }
+      a { text-decoration: none !important; }
+    }

@@ -1,0 +1,23 @@
+
+.inventory-card {
+  width: 100%;
+  min-height: auto;
+  gap: 12px;
+  cursor: default;
+}
+.inventory-card .step-title {
+  margin: 0;
+}
+.inventory-owner,
+.inventory-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.inventory-owner {
+  font-size: 11px;
+}
+.inventory-links .project-link {
+  margin: 0;
+}

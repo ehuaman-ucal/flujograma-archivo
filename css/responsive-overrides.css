@@ -1,0 +1,13 @@
+
+
+@media (max-width: 767px) {
+  .project-card--detail { padding: 13px; }
+  .project-progress { gap: 10px; }
+  .progress-dial { width: 54px; height: 54px; }
+  .progress-blocks { width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .progress-block { flex: 1 1 100%; min-width: 0; }
+  .project-lane-body { flex-direction: column; }
+  .project-lane-body .step-card { width: 100%; }
+  .project-lane-note { border-left: 0; border-top: 1px dashed #E3DCCE; padding: 9px 0 0; }
+  .project-extra-status { margin-left: 0; }
+}
